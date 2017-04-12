@@ -128,7 +128,7 @@ void MusicList::UserInput()
 		list[numrecords] = new Music();
 		list[numrecords]->CaptureMusic();
 		numrecords++;
-		cout << "Would you like to enter another song?" << endl;
+		cout << "Would you like to enter another song? Y/N?" << endl;
 		getline(cin, answer);
 	}
 }
@@ -179,7 +179,7 @@ int MusicList::ReadMusicList(string filename)
 			getline(infile, iTitle, '|');
 			getline(infile, iName, '|'); 
 			getline(infile, iAName, '|');
-			getline(infile, inum, '|');
+			getline(infile, inum);
 			list[numrecords] = new Music(iTitle, iName, iAName, inum);
 			numrecords++;
 		}
@@ -190,7 +190,10 @@ int MusicList::ReadMusicList(string filename)
 
 int main()
 {
-	string filename = "C:\\Users\\Ava Hassas\\Documents\\Music.txt";
+	string filename;
+	cout << "Enter the full filepath name" << endl;
+	getline(cin, filename);
+
 	MusicList myMusic;
 	string answer;
 	int error;
